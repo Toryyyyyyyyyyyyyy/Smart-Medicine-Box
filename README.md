@@ -1,6 +1,6 @@
 # Smart Medicine Box
 
-A medication-reminder application designed for elderly users. It consists of a native Android client and a Python FastAPI backend. Medication data is end-to-end encrypted; the backend stores only ciphertext. A family remote-control mode lets relatives monitor and record doses without signing in with the user's account, and a protected admin console manages the backend deployment.
+A medication-reminder application. It consists of a native Android client and a Python FastAPI backend. Medication data is end-to-end encrypted; the backend stores only ciphertext. A family remote-control mode lets relatives monitor and record doses without signing in with the user's account, and a protected admin console manages the backend deployment.
 
 This project has been officially released. Not all bugs are guaranteed to be fixed; if you find a bug, please report it in [Issues](https://github.com/Toryyyyyyyyyyyyyy/Smart-Medicine-Box/issues). The statements below describe behavior verified against the current source code.
 
@@ -233,7 +233,7 @@ Third-party libraries and assets are governed by their own licenses, which are n
 
 # 智能药箱（Smart Medicine Box）
 
-一款面向老年人的用药提醒应用：原生 Android 客户端 + Python FastAPI 后端。药品数据端到端加密，服务器只存密文；家属远程控制模式让家属无需登录本人账号即可查看和记录服药；受保护的管理网站用于运维后端。
+一款用药提醒应用：原生 Android 客户端 + Python FastAPI 后端。药品数据端到端加密，服务器只存密文；家属远程控制模式让家属无需登录本人账号即可查看和记录服药；受保护的管理网站用于运维后端。
 
 本项目已正式发布。不保证所有缺陷均已修复；如发现 Bug，请到 [Issues](https://github.com/Toryyyyyyyyyyyyyy/Smart-Medicine-Box/issues) 反馈。以下描述均基于对当前源代码的核实。
 
