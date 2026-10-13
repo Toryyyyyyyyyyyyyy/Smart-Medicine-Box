@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/family_access_title"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/_24ssp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:text="@string/family_access_info"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/_16ssp" />
+
+    <TextView style="@style/FieldLabel" android:text="@string/label_senior_user_code" />
+    <EditText
+        android:id="@+id/etUserCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_input"
+        android:hint="@string/hint_user_code"
+        android:inputType="number"
+        android:maxLength="8"
+        android:padding="16dp"
+        android:textSize="@dimen/_18ssp" />
+
+    <TextView style="@style/FieldLabel" android:text="@string/label_family_password" />
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_input"
+        android:hint="@string/hint_family_password_simple"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textSize="@dimen/_18ssp" />
+
+    <Button
+        android:id="@+id/btnAccess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primary"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/btn_access"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/btn_history"
+        android:textColor="@color/primary" />
+</LinearLayout>

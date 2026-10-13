@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 药品名 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_medicine_name" />
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_medicine_name"
+            android:maxLength="20"
+            android:padding="16dp"
+            android:textSize="@dimen/_20ssp" />
+
+        <!-- 剂量 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_dosage" />
+        <EditText
+            android:id="@+id/etDosage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_dosage"
+            android:maxLength="30"
+            android:padding="16dp"
+            android:textSize="@dimen/_20ssp" />
+
+        <!-- 重复 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_repeat" />
+        <RadioGroup
+            android:id="@+id/repeatModeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbWeekday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoSizeMaxTextSize="@dimen/_18ssp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:checked="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/repeat_mode_weekday"
+                android:textSize="@dimen/_18ssp" />
+            <RadioButton
+                android:id="@+id/rbInterval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoSizeMaxTextSize="@dimen/_18ssp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/repeat_mode_interval"
+                android:textSize="@dimen/_18ssp" />
+        </RadioGroup>
+
+        <!-- 模式一：按周几 -->
+        <LinearLayout
+            android:id="@+id/weekdayRepeatContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnEveryDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/btn_every_day"
+                android:textColor="@color/white" />
+            <LinearLayout
+                android:id="@+id/repeatDaysContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <!-- 模式二：每隔几天 -->
+        <LinearLayout
+            android:id="@+id/intervalContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/etIntervalDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:hint="@string/hint_interval_days"
+                android:inputType="number"
+                android:maxLength="3"
+                android:padding="16dp"
+                android:textSize="@dimen/_20ssp" />
+            <TextView
+                android:id="@+id/tvIntervalHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/interval_hint"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+
+        <!-- 服用时间 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_time" />
+        <LinearLayout
+            android:id="@+id/timeSlotsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/btnAddTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/btn_add_time"
+            android:textColor="@color/white" />
+
+        <!-- 库存 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_stock" />
+        <EditText
+            android:id="@+id/etStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:hint="0"
+            android:inputType="number"
+            android:padding="16dp"
+            android:textSize="@dimen/_20ssp" />
+
+        <!-- 备注 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_notes" />
+        <EditText
+            android:id="@+id/etNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_notes"
+            android:maxLength="50"
+            android:padding="16dp"
+            android:textSize="@dimen/_20ssp" />
+
+        <!-- 提示模式 -->
+        <TextView style="@style/FieldLabel" android:text="@string/label_alarm_mode" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/cbSound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/cb_sound"
+                android:textSize="@dimen/_18ssp" />
+
+            <!-- 铃声选择 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="24dp"
+                android:paddingEnd="16dp">
+
+                <Button
+                    android:id="@+id/btnPickRingtone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/choose_ringtone"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvRingtoneName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/default_ringtone"
+                    android:textColor="@color/text_light"
+                    android:textSize="@dimen/_14ssp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cbVibration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/cb_vibration"
+                android:textSize="@dimen/_18ssp" />
+
+            <CheckBox
+                android:id="@+id/cbVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/cb_video"
+                android:textSize="@dimen/_18ssp" />
+        </LinearLayout>
+
+        <!-- 视频选择 -->
+        <Button
+            android:id="@+id/btnPickVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/btn_pick_video"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvVideoPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/no_video"
+            android:textColor="@color/text_light"
+            android:textSize="@dimen/_14ssp" />
+
+        <!-- 保存 -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/success"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/btn_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22ssp" />
+
+        <!-- 删除（仅编辑模式显示） -->
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/danger"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/btn_delete"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22ssp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

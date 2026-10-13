@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Medicine Box</string>
+    <string name="channel_alarm_name">Medication Reminder</string>
+    <string name="channel_alarm_desc">Notifies when it\'s time to take medicine</string>
+    <string name="channel_service_name">Background Service</string>
+    <string name="channel_service_desc">Keeps alarms running</string>
+
+    <!-- Common -->
+    <string name="common_cancel">Cancel</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="default_medicine_name">Medicine</string>
+    <string name="dosage_default">As prescribed</string>
+
+    <!-- Main -->
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="greeting_suffix">%1$s, remember to take your medicine on time</string>
+    <string name="date_pattern">EEEE, MMMM d, yyyy</string>
+    <string name="empty_medicine_hint">No medicines yet, add one below</string>
+    <string name="btn_add_medicine">+ Add Medicine</string>
+    <string name="btn_records">📋 Records</string>
+    <string name="btn_settings">⚙️ Settings</string>
+    <string name="btn_family">👨‍👩‍👧 Family</string>
+    <string name="toast_taken">Medication recorded ✅</string>
+
+    <!-- Bottom navigation -->
+    <string name="tab_medicines">Medicines</string>
+    <string name="tab_records">Records</string>
+    <string name="tab_me">Settings</string>
+    <string name="me_title">Settings</string>
+    <string name="copyright">Copyright © 2026 Tory_zy Tu</string>
+    <string name="label_copyright">Copyright</string>
+    <string name="copyright_version">Smart Medicine Box v1.0</string>
+    <string name="label_family_control">Family Control</string>
+    <string name="label_account">Account</string>
+    <string name="not_logged_in">Not logged in</string>
+    <string name="label_username">Custom Username</string>
+    <string name="label_user_code">User ID</string>
+    <string name="hint_user_code">Enter user ID (8 digits)</string>
+    <string name="toast_invalid_user_code">Enter a valid user ID (8 digits)</string>
+    <string name="toast_user_code_copied">User ID copied</string>
+    <string name="label_enable_family_control">Allow Family Control</string>
+    <string name="label_delete_account">Delete Account</string>
+    <string name="confirm_delete_account">Delete this account? All cloud data will be permanently deleted and cannot be recovered.</string>
+    <string name="toast_account_deleted">Account deleted</string>
+    <string name="toast_username_updated">Username updated</string>
+
+    <!-- Family Control -->
+    <string name="label_family_password">Family Control Password</string>
+    <string name="hint_family_password">Enter family control password (min 6 chars)</string>
+    <string name="hint_family_password_simple">Enter family control password</string>
+    <string name="label_family_migration">Data Migration</string>
+    <string name="family_migration_message">Detected legacy encrypted data. Enter both the family-control password and the login password to complete the one-time migration.</string>
+    <string name="label_change_login_password">Change Login Password</string>
+    <string name="label_view_only">View Only</string>
+    <string name="hint_old_password">Enter old password</string>
+    <string name="hint_new_password">Enter new password (min 6 chars)</string>
+    <string name="password_no_recovery">This password cannot be recovered. If forgotten, data cannot be decrypted.</string>
+    <string name="toast_password_too_short">Password must be at least 6 characters</string>
+    <string name="toast_password_changed">Password changed</string>
+    <string name="toast_family_control_enabled">Family control enabled</string>
+    <string name="toast_family_control_disabled">Family control disabled</string>
+    <string name="family_access_title">Family Control</string>
+    <string name="family_access_info">Enter the target user\'s user ID and family-control password to access remotely without logging in.</string>
+    <string name="label_senior_user_code">Target user\'s user ID</string>
+    <string name="btn_access">Access</string>
+    <string name="family_remote_header">%1$s\'s Smart Medicine Box</string>
+    <string name="toast_server_required">Please configure the server address in settings first</string>
+    <string name="toast_access_failed">Access failed</string>
+    <string name="toast_access_wrong_password">Incorrect password</string>
+    <string name="toast_view_only">This user has view-only enabled</string>
+    <string name="toast_operation_failed">Operation failed</string>
+    <string name="btn_history">History</string>
+    <string name="family_history_title">History</string>
+    <string name="family_history_hint">Tap to enter the control screen; long-press to delete a record</string>
+    <string name="family_history_empty">No history yet</string>
+    <string name="label_username_plain">Username</string>
+    <string name="label_password_plain">Password</string>
+    <string name="toast_control_failed">Control failed. The user has changed their password or disabled family control.</string>
+    <string name="permission_warning">Notifications not allowed - alarms won\'t work. Tap to authorize.</string>
+    <string name="permission_fullscreen_warning">Full-screen notifications are off - the alarm cannot pop up. Tap to enable.</string>
+    <string name="permission_overlay_warning">Overlay permission missing - the alarm cannot pop up on the lock screen. Tap to enable.</string>
+    <string name="label_permissions">Permission settings</string>
+    <string name="permission_notifications">Notifications</string>
+    <string name="permission_fullscreen">Full-screen notifications (Android 14+)</string>
+    <string name="permission_overlay">Display over other apps</string>
+    <string name="permission_background_popup">Background pop-ups</string>
+    <string name="permission_background_popup_desc">This permission cannot be checked by the app. Enable it in Permissions → Other permissions → Background pop-ups (required for the full-screen alarm on the lock screen).</string>
+    <string name="permission_battery">Ignore battery optimizations</string>
+    <string name="permission_exact_alarm">Alarms &amp; reminders (exact alarm)</string>
+    <string name="status_granted">Granted</string>
+    <string name="status_not_granted">Not granted</string>
+    <string name="status_manual">Enable manually</string>
+    <string name="battery_item_title">Ignore battery optimization</string>
+    <string name="battery_item_message">Allow ignoring battery optimizations so the system does not clear the app in the background and break medication reminders.</string>
+    <string name="overlay_item_title">Display over other apps</string>
+    <string name="overlay_item_message">Some devices require this for the full-screen alarm on the lock screen:\n1. Tap Authorize to open system settings;\n2. Find Smart Medicine Box;\n3. Turn on "Allow display over other apps".</string>
+    <string name="popup_item_title">Background pop-ups</string>
+    <string name="popup_item_message">Huawei/HarmonyOS devices require this for the full-screen alarm on the lock screen:\n1. Tap Authorize to open app details;\n2. Go to Permissions → Other permissions → Background pop-ups;\n3. Select Allow.</string>
+    <string name="startup_item_title">App launch management (manual)</string>
+    <string name="startup_item_message">In Phone Manager → App launch, set Smart Medicine Box to Manual and allow Auto-launch, Secondary launch and Background activity.</string>
+    <string name="battery_allow">Authorize</string>
+    <string name="battery_got_it">Got it</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Reminder Settings</string>
+    <string name="label_server_url">Server Address</string>
+    <string name="server_not_set">Server address not set. Visit %1$s to download and deploy the backend, then set the server address to enable it.</string>
+    <string name="btn_save_server">Save</string>
+    <string name="toast_saved">Saved</string>
+    <string name="label_test_alarm">Test Reminder (pops in 5s)</string>
+    <string name="label_test_alarm_short">Test Reminder</string>
+    <string name="btn_test_alarm">Test Alarm Popup</string>
+    <string name="test_alarm_hint">After tapping, lock the screen and a full-screen reminder will appear in 5 seconds</string>
+    <string name="toast_test_alarm">Set, lock the screen and wait 5 seconds</string>
+    <string name="btn_logout">Log Out</string>
+    <string name="confirm_logout">Log out of your account?</string>
+    <string name="btn_login_account">Log In</string>
+    <string name="toast_logged_out">Logged out, you can continue offline</string>
+    <string name="test_medicine_name">Test Medicine</string>
+    <string name="test_dosage">1 tablet</string>
+    <string name="test_time_now">Now</string>
+    <string name="label_language">Language</string>
+    <string name="language_chinese">中文</string>
+    <string name="language_english">English</string>
+    <string name="language_system">Follow system</string>
+    <string name="label_font_size">Font Size</string>
+    <string name="font_size_normal">Default</string>
+    <string name="font_size_large">Large</string>
+    <string name="font_size_xlarge">Extra Large</string>
+    <string name="label_threshold">On-time Threshold</string>
+    <string name="threshold_30">Within 30 minutes</string>
+    <string name="threshold_60">Within 1 hour</string>
+    <string name="threshold_120">Within 2 hours</string>
+    <string name="threshold_180">Within 3 hours</string>
+
+    <!-- Login -->
+    <string name="login_subtitle">Take medicine on time, stay healthy</string>
+    <string name="hint_username">Enter username</string>
+    <string name="hint_password">Enter password (min 6 chars)</string>
+    <string name="hint_password_simple">Password</string>
+    <string name="label_enter_login_password">Enter Login Password</string>
+    <string name="btn_login">Log In</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_skip_login">Skip login, use offline</string>
+    <string name="toast_invalid_username">Enter a username (2-20 chars, no spaces)</string>
+    <string name="toast_login_success">Login successful</string>
+    <string name="error_login_failed">Login failed</string>
+    <string name="toast_session_expired">Account signed in on another device. Please sign in again.</string>
+    <string name="refresh_success">Refreshed</string>
+    <string name="refresh_failed">Refresh failed. Check your network and try again.</string>
+    <string name="toast_server_url_invalid">Invalid server address. Please enter it again.</string>
+    <string name="toast_server_url_https_only">The server address must use https</string>
+    <string name="pair_dialog_title">Server Pairing</string>
+    <string name="pair_dialog_message">This server uses a self-signed certificate. Pair it to establish trust.\n\nRun "python cli.py pair" in the server terminal and enter the 8-digit pairing code below (valid for 10 minutes, single use).</string>
+    <string name="pair_code_hint">8-digit pairing code</string>
+    <string name="btn_pair">Pair</string>
+    <string name="pair_success">Paired successfully</string>
+    <string name="btn_repair">Re-pair</string>
+    <string name="err_server_identity_changed">The server certificate does not match the paired certificate; the server identity may have changed. Disconnected for safety. Please pair again before use.</string>
+    <string name="err_server_untrusted">Server certificate is not trusted. Complete server pairing before connecting.</string>
+    <string name="err_network">Cannot reach the server. Check your network or server address.</string>
+
+    <!-- Family -->
+    <string name="family_title">Family Binding</string>
+    <string name="family_info">After binding, family members can view the target user\'s medication records remotely.\n\nEnter the target user\'s user ID to bind.</string>
+    <string name="label_bind_user_code">Bind target user\'s user ID</string>
+    <string name="btn_bind">Bind</string>
+    <string name="toast_login_first">Please log in first to use family binding</string>
+    <string name="toast_bind_success">Bound successfully</string>
+    <string name="toast_bind_failed">Binding failed</string>
+
+    <!-- Records -->
+    <string name="record_title">Medication Records</string>
+    <string name="record_empty">No records yet</string>
+    <string name="status_taken">Taken</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_missed">Missed</string>
+    <string name="status_skipped">Skipped</string>
+    <string name="status_taken_on_time">On time</string>
+    <string name="status_taken_early">Taken early</string>
+    <string name="status_taken_late">Taken late</string>
+    <string name="record_scheduled_time_format">Scheduled time: %1$s</string>
+    <string name="record_status_time_format">%1$s · at %2$s</string>
+    <string name="btn_take">Take</string>
+    <string name="pending_dose_format">%1$s missed</string>
+    <string name="record_item_format">%1$s · %2$s</string>
+    <string name="record_fallback_name">Medicine #%1$s</string>
+    <string name="record_date_format">MMM d, HH:mm</string>
+    <string name="select_all">Select All</string>
+    <string name="deselect_all">Deselect All</string>
+    <string name="selected_count">%1$d selected</string>
+    <string name="confirm_delete_records">Delete %1$d selected records?</string>
+    <string name="btn_undo">Undo</string>
+    <string name="confirm_undo_record">Undo this medication record? The remaining stock will be restored.</string>
+    <string name="toast_undone">Undone</string>
+
+    <!-- Alarm -->
+    <string name="alarm_take_medicine">Time for medicine: %1$s</string>
+    <string name="alarm_dosage_format">Dose: %1$s</string>
+    <string name="alarm_out_of_stock">Out of medicine - refill soon</string>
+    <string name="alarm_btn_taken">Taken</string>
+    <string name="alarm_btn_snooze">Remind in 5 min</string>
+    <string name="alarm_btn_skip">Not now</string>
+
+    <!-- Medicine Edit -->
+    <string name="label_add_medicine">Add Medicine</string>
+    <string name="label_edit_medicine">Edit Medicine</string>
+    <string name="label_medicine_name">Medicine Name *</string>
+    <string name="hint_medicine_name">e.g. Aspirin</string>
+    <string name="label_dosage">Dosage</string>
+    <string name="hint_dosage">e.g. 1 tablet, 10ml, 2 capsules</string>
+    <string name="label_repeat">Repeat</string>
+    <string name="repeat_mode_weekday">By weekday</string>
+    <string name="repeat_mode_interval">Every N days</string>
+    <string name="interval_hint">Remind every few days, starting today</string>
+    <string name="hint_interval_days">Enter days, e.g. 3</string>
+    <string name="toast_invalid_interval">Enter a valid number of days</string>
+    <string name="btn_every_day">Every day</string>
+    <string name="label_time">Time</string>
+    <string name="btn_add_time">+ Add Time</string>
+    <string name="toast_max_time">Max 6 times</string>
+    <string name="label_stock">Remaining</string>
+    <string name="stock_format">Remaining: %1$d</string>
+    <string name="stock_out">Out of stock</string>
+    <string name="label_notes">Notes</string>
+    <string name="hint_notes">e.g. after meals</string>
+    <string name="label_alarm_mode">Alert Mode</string>
+    <string name="cb_sound">Sound</string>
+    <string name="cb_vibration">Vibration</string>
+    <string name="cb_video">Custom Video</string>
+    <string name="choose_ringtone">Choose Ringtone</string>
+    <string name="default_ringtone">Default Ringtone</string>
+    <string name="btn_pick_video">Choose Reminder Video</string>
+    <string name="no_video">No video selected</string>
+    <string name="video_selected">Video selected</string>
+    <string name="toast_video_saved">Video saved</string>
+    <string name="toast_video_failed">Failed to save video</string>
+    <string name="crop_hint">Drag or resize the frame to choose the crop area</string>
+    <string name="rotate_left">Rotate Left</string>
+    <string name="rotate_right">Rotate Right</string>
+    <string name="cropping_video">Cropping video…</string>
+    <string name="crop_failed">Failed to crop video</string>
+    <string name="toast_ringtone_saved">Ringtone saved</string>
+    <string name="toast_ringtone_failed">Failed to save ringtone</string>
+    <string name="custom_ringtone_format">Custom ringtone: %1$s</string>
+    <string name="ringtone_selected">Ringtone selected</string>
+    <string name="option_system_ringtone">System Ringtone</string>
+    <string name="option_custom_audio">Custom Audio File</string>
+    <string name="option_restore_default">Restore Default</string>
+    <string name="confirm_no_sound_vibration">Neither sound nor vibration is selected. Continue?</string>
+    <string name="toast_enter_name">Enter medicine name</string>
+    <string name="toast_select_time">Set at least one time</string>
+    <string name="toast_select_video">Choose a reminder video first</string>
+    <string name="btn_save">Save</string>
+    <string name="toast_save_success">Saved</string>
+    <string name="btn_delete">Delete</string>
+    <string name="confirm_delete_medicine">Delete this medicine? This cannot be undone.</string>
+    <string name="toast_deleted">Deleted</string>
+    <string name="confirm_delete_to_trash">Delete this medicine? It will be moved to the recycle bin and can be restored there.</string>
+    <string name="toast_moved_to_trash">Moved to recycle bin</string>
+
+    <!-- Recycle Bin -->
+    <string name="trash_title">Recycle Bin</string>
+    <string name="trash_empty">Recycle bin is empty</string>
+    <string name="trash_item_format">%1$s · deleted %2$s</string>
+    <string name="trash_deleted_at_format">Deleted: %1$s</string>
+    <string name="btn_restore">Restore</string>
+    <string name="toast_restored">Restored</string>
+    <string name="btn_purge">Delete Forever</string>
+    <string name="confirm_purge_medicine">Delete \"%1$s\" forever? This cannot be undone.</string>
+    <string name="toast_purged">Deleted forever</string>
+    <string name="confirm_purge_medicines">Delete %1$d selected medicines forever? This cannot be undone.</string>
+    <string name="btn_trash">Recycle Bin</string>
+    <string name="trash_auto_delete_hint">Items not restored within 7 days are removed automatically</string>
+
+    <!-- Service notification -->
+    <string name="service_notification_title">Smart Medicine Box running</string>
+    <string name="service_notification_text">Will remind you to take medicine on time</string>
+
+    <!-- Weekdays -->
+    <string-array name="weekdays">
+        <item>Mo</item>
+        <item>Tu</item>
+        <item>We</item>
+        <item>Th</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>Su</item>
+    </string-array>
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 闹钟/常驻/自启 -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <!-- 华为/鸿蒙设备：全屏闹钟在锁屏上直接弹出需要悬浮窗权限（系统按此决定是否展示全屏通知） -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- 震动 / 视频 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartMedicineBox"
+        tools:targetApi="34">
+
+        <!-- 前台服务类型说明（specialUse） -->
+        <property
+            android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+            android:value="medication_reminder" />
+
+        <!-- 主界面 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 登录 -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+
+        <!-- 账号页 -->
+        <activity
+            android:name=".AccountActivity"
+            android:exported="false"
+            android:label="@string/label_account" />
+
+        <!-- 全屏闹钟弹窗 -->
+        <activity
+            android:name=".AlarmActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:theme="@style/Theme.AlarmFullScreen" />
+
+        <!-- 药品编辑 -->
+        <activity
+            android:name=".MedicineEditActivity"
+            android:exported="false"
+            android:label="@string/label_add_medicine" />
+
+        <!-- 视频裁剪 -->
+        <activity
+            android:name=".CropActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AlarmFullScreen" />
+
+        <!-- 家属绑定 -->
+        <activity
+            android:name=".FamilyActivity"
+            android:exported="false"
+            android:label="@string/family_title" />
+
+        <!-- 家属控制入口（无登录访问） -->
+        <activity
+            android:name=".FamilyAccessActivity"
+            android:exported="false"
+            android:label="@string/family_access_title" />
+
+        <!-- 家属控制历史记录 -->
+        <activity
+            android:name=".FamilyHistoryActivity"
+            android:exported="false"
+            android:label="@string/family_history_title" />
+
+        <!-- 家属远程界面 -->
+        <activity
+            android:name=".FamilyRemoteActivity"
+            android:exported="false"
+            android:label="@string/family_access_title" />
+
+        <!-- 回收站 -->
+        <activity
+            android:name=".TrashActivity"
+            android:exported="false"
+            android:label="@string/trash_title" />
+
+        <!-- 闹钟触发接收器 -->
+        <receiver
+            android:name=".alarm.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- 划掉后重启前台服务的接收器 -->
+        <receiver
+            android:name=".service.RestartReceiver"
+            android:exported="false" />
+
+        <!-- 每日 0 点未服用清理接收器 -->
+        <receiver
+            android:name=".service.MidnightReceiver"
+            android:exported="false" />
+
+        <!-- 开机自启接收器 -->
+        <receiver
+            android:name=".service.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.REBOOT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 前台服务（常驻） -->
+        <service
+            android:name=".service.AlarmService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse" />
+    </application>
+</manifest>

@@ -1,0 +1,17 @@
+# Caddy 反向代理配置示例（公网部署用）
+# 用法：复制为 Caddyfile，把 your.domain.com 换成你自己的域名，
+# 启动：caddy run --config Caddyfile
+# Caddy 会自动申请并续期 Let's Encrypt 证书（需域名正确解析到本机、80/443 端口可达）。
+
+your.domain.com {
+    # 后端仅监听 127.0.0.1:8000（DEPLOY_MODE=public）
+    reverse_proxy 127.0.0.1:8000
+
+    encode gzip
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+    }
+}

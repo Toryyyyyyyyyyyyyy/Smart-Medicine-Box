@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 供代码里 setTextSize 使用的别名：指向 ssp 库的缩放尺寸（避免直接引用库的 R 类） -->
+    <dimen name="text_size_14">@dimen/_14ssp</dimen>
+    <dimen name="text_size_15">@dimen/_15ssp</dimen>
+    <dimen name="text_size_16">@dimen/_16ssp</dimen>
+    <dimen name="text_size_18">@dimen/_18ssp</dimen>
+</resources>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">智能药箱</string>
+    <string name="channel_alarm_name">服药提醒</string>
+    <string name="channel_alarm_desc">到点服药提醒通知</string>
+    <string name="channel_service_name">后台常驻服务</string>
+    <string name="channel_service_desc">保持闹钟正常运行</string>
+
+    <!-- 通用 -->
+    <string name="common_cancel">取消</string>
+    <string name="common_confirm">确认</string>
+    <string name="default_medicine_name">药品</string>
+    <string name="dosage_default">按医嘱</string>
+
+    <!-- 主界面 -->
+    <string name="greeting_morning">早上好</string>
+    <string name="greeting_afternoon">下午好</string>
+    <string name="greeting_evening">晚上好</string>
+    <string name="greeting_suffix">%1$s，记得按时吃药哦～</string>
+    <string name="date_pattern">yyyy年MM月dd日 EEEE</string>
+    <string name="empty_medicine_hint">还没有药品，点击下方添加</string>
+    <string name="btn_add_medicine">+ 添加药品</string>
+    <string name="btn_records">📋 记录</string>
+    <string name="btn_settings">⚙️ 设置</string>
+    <string name="btn_family">👨‍👩‍👧 家属</string>
+    <string name="toast_taken">已记录服药 ✅</string>
+
+    <!-- 底部导航 -->
+    <string name="tab_medicines">药品</string>
+    <string name="tab_records">记录</string>
+    <string name="tab_me">设置</string>
+    <string name="me_title">设置</string>
+    <string name="copyright">Copyright © 2026 Tory_zy Tu</string>
+    <string name="label_copyright">版权信息</string>
+    <string name="copyright_version">智能药箱 v1.0</string>
+    <string name="label_family_control">家属控制</string>
+    <string name="label_account">账号</string>
+    <string name="not_logged_in">未登录</string>
+    <string name="label_username">自定义用户名</string>
+    <string name="label_user_code">用户id</string>
+    <string name="hint_user_code">请输入用户id（8位数字）</string>
+    <string name="toast_invalid_user_code">请输入正确的用户id（8位数字）</string>
+    <string name="toast_user_code_copied">用户id已复制</string>
+    <string name="label_enable_family_control">允许家人控制</string>
+    <string name="label_delete_account">注销账号</string>
+    <string name="confirm_delete_account">确定注销账号吗？云端数据将被永久删除，无法恢复。</string>
+    <string name="toast_account_deleted">账号已注销</string>
+    <string name="toast_username_updated">用户名已更新</string>
+
+    <!-- 家人控制 -->
+    <string name="label_family_password">家人控制密码</string>
+    <string name="hint_family_password">请输入家人控制密码（至少6位）</string>
+    <string name="hint_family_password_simple">请输入家人控制密码</string>
+    <string name="label_family_migration">数据迁移</string>
+    <string name="family_migration_message">检测到旧版加密数据，请同时输入家人控制密码和登录密码完成一次性迁移。</string>
+    <string name="label_change_login_password">更改登录密码</string>
+    <string name="label_view_only">仅允许查看</string>
+    <string name="hint_old_password">请输入旧密码</string>
+    <string name="hint_new_password">请输入新密码（至少6位）</string>
+    <string name="password_no_recovery">密码无法找回，请牢记。忘记密码将无法解密数据。</string>
+    <string name="toast_password_too_short">密码至少6位</string>
+    <string name="toast_password_changed">密码已更改</string>
+    <string name="toast_family_control_enabled">家人控制已开启</string>
+    <string name="toast_family_control_disabled">家人控制已关闭</string>
+    <string name="family_access_title">家属控制</string>
+    <string name="family_access_info">输入控制对象用户id和家人控制密码，无需登录即可远程查看。</string>
+    <string name="label_senior_user_code">控制对象用户id</string>
+    <string name="btn_access">进入</string>
+    <string name="family_remote_header">%1$s的智慧药箱</string>
+    <string name="toast_server_required">请先在设置中配置服务器地址</string>
+    <string name="toast_access_failed">访问失败</string>
+    <string name="toast_access_wrong_password">密码错误</string>
+    <string name="toast_view_only">该用户已开启仅允许查看，无法操作</string>
+    <string name="toast_operation_failed">操作失败</string>
+    <string name="btn_history">历史记录</string>
+    <string name="family_history_title">历史记录</string>
+    <string name="family_history_hint">点击进入控制界面，长按可删除记录</string>
+    <string name="family_history_empty">暂无历史记录</string>
+    <string name="label_username_plain">用户名</string>
+    <string name="label_password_plain">密码</string>
+    <string name="toast_control_failed">控制失败。该用户已更改密码或关闭控制功能</string>
+    <string name="permission_warning">未授权通知/全屏权限，闹钟将无法正常提醒，点击授权</string>
+    <string name="permission_fullscreen_warning">没有全屏通知权限，闹钟无法全屏弹出，点击授权</string>
+    <string name="permission_overlay_warning">缺少悬浮窗权限，锁屏时闹钟无法全屏弹出，点击授权</string>
+    <string name="label_permissions">权限管理</string>
+    <string name="permission_notifications">通知权限</string>
+    <string name="permission_fullscreen">全屏通知（Android 14+）</string>
+    <string name="permission_overlay">悬浮窗</string>
+    <string name="permission_background_popup">后台弹窗</string>
+    <string name="permission_background_popup_desc">此权限无法由应用检测状态。请在「权限 → 其他权限 → 后台弹窗」中开启（锁屏时闹钟全屏弹出必需）。</string>
+    <string name="permission_battery">忽略电池优化</string>
+    <string name="permission_exact_alarm">闹钟与提醒（精确闹钟）</string>
+    <string name="status_granted">已授权</string>
+    <string name="status_not_granted">未授权</string>
+    <string name="status_manual">需手动开启</string>
+    <string name="battery_item_title">忽略电池优化</string>
+    <string name="battery_item_message">允许忽略电池优化，避免系统在后台清理应用导致服药提醒失效。</string>
+    <string name="overlay_item_title">显示在其他应用上层</string>
+    <string name="overlay_item_message">部分设备上锁屏全屏闹钟需要此权限：\n1. 点击「去授权」进入系统设置；\n2. 找到智慧药箱；\n3. 开启「允许显示在其他应用上层」。</string>
+    <string name="popup_item_title">后台弹窗</string>
+    <string name="popup_item_message">华为/鸿蒙设备锁屏全屏闹钟需要此权限：\n1. 点击「去授权」进入应用详情；\n2. 进入 权限 → 其他权限 → 后台弹窗；\n3. 选择「允许」。</string>
+    <string name="startup_item_title">启动管理（手动设置）</string>
+    <string name="startup_item_message">请在 手机管家 → 应用启动管理 中，将智慧药箱改为手动管理，并允许自启动、关联启动与后台活动。</string>
+    <string name="battery_allow">去授权</string>
+    <string name="battery_got_it">知道了</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">提醒设置</string>
+    <string name="label_server_url">服务器地址</string>
+    <string name="server_not_set">服务器地址未设置，请访问 %1$s 下载后端代码并部署到服务器，再设置服务器地址以启用。</string>
+    <string name="btn_save_server">保存地址</string>
+    <string name="toast_saved">已保存</string>
+    <string name="label_test_alarm">测试提醒（5秒后弹出）</string>
+    <string name="label_test_alarm_short">测试提醒</string>
+    <string name="btn_test_alarm">测试闹钟弹窗</string>
+    <string name="test_alarm_hint">点击后返回桌面锁屏，5秒后会全屏弹出提醒</string>
+    <string name="toast_test_alarm">已设置，请锁屏等待 5 秒</string>
+    <string name="btn_logout">退出登录</string>
+    <string name="confirm_logout">确定要退出登录吗？</string>
+    <string name="btn_login_account">登录账号</string>
+    <string name="toast_logged_out">已退出登录，可继续离线使用</string>
+    <string name="test_medicine_name">测试药品</string>
+    <string name="test_dosage">1片</string>
+    <string name="test_time_now">现在</string>
+    <string name="label_language">语言</string>
+    <string name="language_chinese">中文</string>
+    <string name="language_english">English</string>
+    <string name="language_system">跟随系统</string>
+    <string name="label_font_size">字体大小</string>
+    <string name="font_size_normal">默认</string>
+    <string name="font_size_large">大</string>
+    <string name="font_size_xlarge">特大</string>
+    <string name="label_threshold">按时服药阈值</string>
+    <string name="threshold_30">30分钟以内</string>
+    <string name="threshold_60">1小时以内</string>
+    <string name="threshold_120">2小时以内</string>
+    <string name="threshold_180">3小时以内</string>
+
+    <!-- 登录 -->
+    <string name="login_subtitle">按时吃药，健康每一天</string>
+    <string name="hint_username">请输入用户名</string>
+    <string name="hint_password">请输入密码（至少6位）</string>
+    <string name="hint_password_simple">密码</string>
+    <string name="label_enter_login_password">请输入登录密码</string>
+    <string name="btn_login">登录</string>
+    <string name="btn_register">注册</string>
+    <string name="btn_skip_login">暂不登录，直接使用</string>
+    <string name="toast_invalid_username">请输入用户名（2-20个字符，不含空格）</string>
+    <string name="toast_login_success">登录成功</string>
+    <string name="error_login_failed">登录失败</string>
+    <string name="toast_session_expired">账号已在其他设备登录，请重新登录</string>
+    <string name="refresh_success">已刷新</string>
+    <string name="refresh_failed">刷新失败，请检查网络后重试</string>
+    <string name="toast_server_url_invalid">服务器地址无效，请重新输入</string>
+    <string name="toast_server_url_https_only">服务器地址必须是 https 地址</string>
+    <string name="pair_dialog_title">服务器配对</string>
+    <string name="pair_dialog_message">该服务器使用自签名证书，需先配对建立信任。\n\n请在服务器终端执行 python cli.py pair，把显示的 8 位配对码输入下方（10 分钟内有效，仅可使用一次）。</string>
+    <string name="pair_code_hint">8 位配对码</string>
+    <string name="btn_pair">配对</string>
+    <string name="pair_success">配对成功</string>
+    <string name="btn_repair">重新配对</string>
+    <string name="err_server_identity_changed">服务器证书与已配对的证书不一致，服务器身份可能已改变。为安全起见已断开连接，请重新配对后再使用。</string>
+    <string name="err_server_untrusted">服务器证书不受信任，请完成服务器配对后再连接</string>
+    <string name="err_network">无法连接服务器，请检查网络或服务器地址</string>
+
+    <!-- 家属绑定 -->
+    <string name="family_title">家属绑定</string>
+    <string name="family_info">家属绑定后，家属可远程查看控制对象的服药记录。\n\n输入控制对象用户id即可绑定。</string>
+    <string name="label_bind_user_code">绑定控制对象用户id</string>
+    <string name="btn_bind">绑定</string>
+    <string name="toast_login_first">请先登录后使用家属绑定</string>
+    <string name="toast_bind_success">绑定成功</string>
+    <string name="toast_bind_failed">绑定失败</string>
+
+    <!-- 服药记录 -->
+    <string name="record_title">服药记录</string>
+    <string name="record_empty">暂无服药记录</string>
+    <string name="status_taken">已服用</string>
+    <string name="status_pending">待服用</string>
+    <string name="status_missed">未服用</string>
+    <string name="status_skipped">已跳过</string>
+    <string name="status_taken_on_time">已按时服用</string>
+    <string name="status_taken_early">提前服用</string>
+    <string name="status_taken_late">推迟服用</string>
+    <string name="record_scheduled_time_format">计划时间：%1$s</string>
+    <string name="record_status_time_format">%1$s·实际%2$s</string>
+    <string name="btn_take">服用</string>
+    <string name="pending_dose_format">%1$s 未服用</string>
+    <string name="record_item_format">%1$s · %2$s</string>
+    <string name="record_fallback_name">药品 #%1$s</string>
+    <string name="record_date_format">MM月dd日 HH:mm</string>
+    <string name="select_all">全选</string>
+    <string name="deselect_all">取消全选</string>
+    <string name="selected_count">已选 %1$d 项</string>
+    <string name="confirm_delete_records">确定删除选中的 %1$d 条记录吗？</string>
+    <string name="btn_undo">撤销</string>
+    <string name="confirm_undo_record">确定撤销这条服药记录吗？撤销后将恢复剩余数量。</string>
+    <string name="toast_undone">已撤销</string>
+
+    <!-- 闹钟弹窗 -->
+    <string name="alarm_take_medicine">该吃药了：%1$s</string>
+    <string name="alarm_dosage_format">剂量：%1$s</string>
+    <string name="alarm_out_of_stock">药品已用完，请及时补充</string>
+    <string name="alarm_btn_taken">已服用</string>
+    <string name="alarm_btn_snooze">5分钟后提醒</string>
+    <string name="alarm_btn_skip">暂不服用</string>
+
+    <!-- 药品编辑 -->
+    <string name="label_add_medicine">添加药品</string>
+    <string name="label_edit_medicine">编辑药品</string>
+    <string name="label_medicine_name">药品名称 *</string>
+    <string name="hint_medicine_name">如：阿司匹林</string>
+    <string name="label_dosage">服用剂量</string>
+    <string name="hint_dosage">如：1片、10ml、2粒</string>
+    <string name="label_repeat">重复</string>
+    <string name="repeat_mode_weekday">按周几</string>
+    <string name="repeat_mode_interval">每隔几天</string>
+    <string name="interval_hint">从今天开始，每隔几天提醒一次</string>
+    <string name="hint_interval_days">请输入天数，如：3</string>
+    <string name="toast_invalid_interval">请输入正确的间隔天数</string>
+    <string name="btn_every_day">每天</string>
+    <string name="label_time">服用时间</string>
+    <string name="btn_add_time">+ 添加时间点</string>
+    <string name="toast_max_time">最多设置 6 个时间点</string>
+    <string name="label_stock">剩余数量</string>
+    <string name="stock_format">剩余 %1$d</string>
+    <string name="stock_out">没药了</string>
+    <string name="label_notes">备注</string>
+    <string name="hint_notes">如：饭后服用</string>
+    <string name="label_alarm_mode">提示模式</string>
+    <string name="cb_sound">铃声</string>
+    <string name="cb_vibration">震动</string>
+    <string name="cb_video">自定义视频</string>
+    <string name="choose_ringtone">选择铃声</string>
+    <string name="default_ringtone">默认铃声</string>
+    <string name="btn_pick_video">选择提醒视频</string>
+    <string name="no_video">未选择视频</string>
+    <string name="video_selected">已选择视频</string>
+    <string name="toast_video_saved">视频已保存</string>
+    <string name="toast_video_failed">视频保存失败</string>
+    <string name="crop_hint">拖动或缩放方框，选择全屏显示的裁剪区域</string>
+    <string name="rotate_left">向左旋转</string>
+    <string name="rotate_right">向右旋转</string>
+    <string name="cropping_video">正在裁剪视频…</string>
+    <string name="crop_failed">视频裁剪失败</string>
+    <string name="toast_ringtone_saved">铃声已保存</string>
+    <string name="toast_ringtone_failed">铃声保存失败</string>
+    <string name="custom_ringtone_format">自定义铃声：%1$s</string>
+    <string name="ringtone_selected">已选择铃声</string>
+    <string name="option_system_ringtone">系统铃声</string>
+    <string name="option_custom_audio">自定义音频文件</string>
+    <string name="option_restore_default">恢复默认</string>
+    <string name="confirm_no_sound_vibration">铃声和震动都未选择，是否确认?</string>
+    <string name="toast_enter_name">请输入药品名称</string>
+    <string name="toast_select_time">请至少设置一个服用时间</string>
+    <string name="toast_select_video">请先选择提醒视频</string>
+    <string name="btn_save">保存</string>
+    <string name="toast_save_success">保存成功</string>
+    <string name="btn_delete">删除</string>
+    <string name="confirm_delete_medicine">确定要删除该药品吗？此操作不可恢复。</string>
+    <string name="toast_deleted">已删除</string>
+    <string name="confirm_delete_to_trash">确定删除该药品吗？将移入回收站，可在回收站中恢复。</string>
+    <string name="toast_moved_to_trash">已移入回收站</string>
+
+    <!-- 回收站 -->
+    <string name="trash_title">回收站</string>
+    <string name="trash_empty">回收站是空的</string>
+    <string name="trash_item_format">%1$s · 删除于 %2$s</string>
+    <string name="trash_deleted_at_format">删除于%1$s</string>
+    <string name="btn_restore">恢复</string>
+    <string name="toast_restored">已恢复</string>
+    <string name="btn_purge">永久删除</string>
+    <string name="confirm_purge_medicine">确定永久删除「%1$s」吗？删除后无法恢复。</string>
+    <string name="toast_purged">已永久删除</string>
+    <string name="confirm_purge_medicines">确定永久删除选中的 %1$d 个药品吗？删除后无法恢复。</string>
+    <string name="btn_trash">回收站</string>
+    <string name="trash_auto_delete_hint">超过 7 天未恢复的条目将自动清除</string>
+
+    <!-- 前台服务通知 -->
+    <string name="service_notification_title">智能药箱运行中</string>
+    <string name="service_notification_text">将按时提醒您服药</string>
+
+    <!-- 星期 -->
+    <string-array name="weekdays">
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+        <item>日</item>
+    </string-array>
+</resources>

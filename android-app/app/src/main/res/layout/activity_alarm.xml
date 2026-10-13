@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:keepScreenOn="true">
+
+    <!-- 视频播放层（video 类型时显示） -->
+    <TextureView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 遮罩 -->
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <!-- 信息 + 按钮：用 ScrollView 包裹，小屏/大字体溢出时可滚动，避免按键跑到屏幕外 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/alarmIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/default_medicine_name"
+                android:src="@drawable/ic_pill"
+                android:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_56ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMedicineName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:autoSizeMaxTextSize="@dimen/_40ssp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_40ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDosage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:autoSizeMaxTextSize="@dimen/_28ssp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="#DDDDDD"
+                android:textSize="@dimen/_28ssp" />
+
+            <!-- 药品备注：非空时显示在剂量下方（最多两行自动换行，按键随布局自然下移），为空整行隐藏 -->
+            <TextView
+                android:id="@+id/tvNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:autoSizeMaxTextSize="@dimen/_24ssp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text=""
+                android:textColor="#DDDDDD"
+                android:textSize="@dimen/_24ssp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvOutOfStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:autoSizeMaxTextSize="@dimen/_24ssp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/bg_stock_warning"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/alarm_out_of_stock"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_24ssp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnTaken"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:backgroundTint="#52C41A"
+                    android:maxLines="1"
+                    android:text="@string/alarm_btn_taken"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/_24ssp" />
+
+                <Button
+                    android:id="@+id/btnSnooze"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#666666"
+                    android:maxLines="1"
+                    android:text="@string/alarm_btn_snooze"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/_24ssp" />
+
+                <Button
+                    android:id="@+id/btnSkip"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#FAAD14"
+                    android:maxLines="1"
+                    android:text="@string/alarm_btn_skip"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/_24ssp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

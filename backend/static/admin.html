@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="page_title">Smart Medicine Box · Admin</title>
+<style>
+  :root { --bg:#f2f4f7; --card:#fff; --text:#1f2933; --muted:#7b8794; --accent:#1668dc; --danger:#cf1322; --ok:#52c41a; --warn:#faad14; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,"Microsoft YaHei",sans-serif; }
+  .container { max-width:900px; margin:0 auto; padding:24px 16px; }
+  .card { background:var(--card); border-radius:10px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  h1 { font-size:22px; margin:0 0 4px; }
+  h2 { font-size:16px; margin:0 0 12px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .banner { background:#fff7e6; border:1px solid #ffd591; color:#ad6800; padding:12px 16px; border-radius:8px; margin-bottom:16px; font-size:14px; }
+  label { display:block; font-size:13px; margin:10px 0 4px; }
+  input[type=text],input[type=password] { width:100%; padding:9px 10px; border:1px solid #d9e2ec; border-radius:6px; font-size:14px; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:9px 16px; font-size:14px; cursor:pointer; }
+  button.danger { background:var(--danger); }
+  button.ghost { background:#e4e9f0; color:var(--text); }
+  .lang-switch { display:inline-flex; gap:4px; }
+  .lang-switch button { background:#eef1f5; color:var(--muted); padding:5px 10px; font-size:12px; }
+  .lang-switch button.active { background:var(--accent); color:#fff; }
+  .tabs { display:flex; gap:6px; margin:12px 0 16px; flex-wrap:wrap; }
+  .tabs button { background:#eef1f5; color:var(--text); padding:8px 14px; font-size:14px; border-radius:6px; }
+  .tabs button.active { background:var(--accent); color:#fff; }
+  .stats { display:flex; flex-wrap:wrap; gap:12px; }
+  .stat { flex:1 1 120px; background:#f6f8fb; border-radius:8px; padding:12px; text-align:center; }
+  .stat b { font-size:22px; display:block; }
+  .stat span { font-size:12px; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:8px 6px; border-bottom:1px solid #eef1f5; }
+  th { color:var(--muted); font-weight:500; }
+  .pill { display:inline-block; padding:2px 8px; border-radius:10px; font-size:12px; }
+  .pill.on { background:#e6fffb; color:#08979c; }
+  .pill.off { background:#f0f2f5; color:#8c959f; }
+  .row { display:flex; gap:8px; align-items:center; }
+  .flex-end { justify-content:flex-end; }
+  .header-row { justify-content:space-between; }
+  #loginView { max-width:380px; margin:60px auto; }
+  .hidden { display:none; }
+  .msg { font-size:13px; margin-top:8px; }
+  .msg.err { color:var(--danger); } .msg.ok { color:var(--ok); }
+  .pair-code { font-family:monospace; font-size:26px; font-weight:bold; letter-spacing:4px; background:#f6f8fb; border-radius:8px; padding:10px 16px; display:inline-block; margin-top:10px; }
+  .pair-hint { font-size:13px; color:var(--muted); margin-top:8px; }
+  iframe { width:100%; height:70vh; border:0; border-radius:8px; background:#fff; }
+</style>
+</head>
+<body>
+<div id="loginView" class="container hidden">
+  <div class="card">
+    <div class="row header-row" style="margin-bottom:8px">
+      <div>
+        <h1 data-i18n="login_title">Admin Console</h1>
+        <p class="muted" data-i18n="login_subtitle">Sign in with the administrator account</p>
+      </div>
+      <div class="lang-switch" id="langSwitchLogin">
+        <button data-lang="en">EN</button>
+        <button data-lang="zh">中</button>
+      </div>
+    </div>
+    <label data-i18n="username_label">Username</label>
+    <input type="text" id="loginUsername" autocomplete="username">
+    <label data-i18n="password_label">Password</label>
+    <input type="password" id="loginPassword" autocomplete="current-password">
+    <div class="row flex-end" style="margin-top:14px">
+      <button id="btnLogin" data-i18n="login_btn">Sign in</button>
+    </div>
+    <div id="loginMsg" class="msg err"></div>
+  </div>
+</div>
+
+<div id="mainView" class="container hidden">
+  <div class="card">
+    <div class="row header-row">
+      <div>
+        <h1 data-i18n="main_title">Admin Console</h1>
+        <span class="muted" id="whoami"></span>
+      </div>
+      <div class="row">
+        <div class="lang-switch" id="langSwitchMain">
+          <button data-lang="en">EN</button>
+          <button data-lang="zh">中</button>
+        </div>
+        <button class="ghost" id="btnLogout" data-i18n="logout_btn">Sign out</button>
+      </div>
+    </div>
+    <div class="tabs">
+      <button data-tab="overview" data-i18n="tab_overview">Overview</button>
+      <button data-tab="users" data-i18n="tab_users">Users</button>
+      <button data-tab="docs" data-i18n="tab_docs">API Docs</button>
+    </div>
+  </div>
+
+  <div id="tabOverview">
+    <div id="pwBanner" class="banner hidden" data-i18n="default_pw_banner">⚠️ The initial default password is still active. Change it below immediately (required before public deployment).</div>
+
+    <div class="card">
+      <h2 data-i18n="overview_title">Server Overview</h2>
+      <div class="stats" id="stats"></div>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="pairing_title">LAN Pairing</h2>
+      <p class="muted" data-i18n="pairing_desc">Generate a one-time pairing code for pairing a device with this server.</p>
+      <div class="row" style="margin-top:10px">
+        <button id="btnGenPairCode" data-i18n="pairing_btn">Generate code</button>
+      </div>
+      <div id="pairResult" class="hidden">
+        <div class="pair-code" id="pairCode"></div>
+        <div class="pair-hint" id="pairHint"></div>
+      </div>
+      <div id="pairMsg" class="msg"></div>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="change_pw_title">Change Administrator Password</h2>
+      <label data-i18n="old_pw_label">Old password</label>
+      <input type="password" id="oldPw" autocomplete="current-password">
+      <label data-i18n="new_pw_label">New password (8-64 characters)</label>
+      <input type="password" id="newPw" autocomplete="new-password">
+      <div class="row flex-end" style="margin-top:14px">
+        <button id="btnChangePw" data-i18n="change_pw_btn">Change password</button>
+      </div>
+      <div id="pwMsg" class="msg"></div>
+    </div>
+  </div>
+
+  <div id="tabUsers" class="hidden">
+    <div class="card">
+      <h2 data-i18n="users_title">User Management</h2>
+      <table>
+        <thead><tr>
+          <th data-i18n="th_user_code">User ID</th>
+          <th data-i18n="th_username">Username</th>
+          <th data-i18n="th_family">Family Control</th>
+          <th data-i18n="th_last_seen">Last Heartbeat</th>
+          <th data-i18n="th_created">Registered</th>
+          <th></th>
+        </tr></thead>
+        <tbody id="userRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="tabDocs" class="hidden">
+    <div class="card" style="padding:0; overflow:hidden">
+      <iframe id="docsFrame" title="API Docs"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+
+// ==================== 中英文语言系统（默认英文，选择存本地，无需重新登录） ====================
+const I18N = {
+  en: {
+    page_title: 'Smart Medicine Box · Admin',
+    login_title: 'Admin Console',
+    login_subtitle: 'Sign in with the administrator account',
+    username_label: 'Username',
+    password_label: 'Password',
+    login_btn: 'Sign in',
+    main_title: 'Admin Console',
+    logout_btn: 'Sign out',
+    tab_overview: 'Overview',
+    tab_users: 'Users',
+    tab_docs: 'API Docs',
+    default_pw_banner: '⚠️ The initial default password is still active. Change it below immediately (required before public deployment).',
+    overview_title: 'Server Overview',
+    pairing_title: 'LAN Pairing',
+    pairing_desc: 'Generate a one-time pairing code for pairing a device with this server.',
+    pairing_btn: 'Generate code',
+    pairing_result_prefix: 'Pairing code: ',
+    pairing_result_suffix: '  (valid {min} minutes, single use)',
+    pairing_hint: 'In the app: Me → Server → save the https address, then enter this code when prompted.',
+    change_pw_title: 'Change Administrator Password',
+    old_pw_label: 'Old password',
+    new_pw_label: 'New password (8-64 characters)',
+    change_pw_btn: 'Change password',
+    users_title: 'User Management',
+    th_user_code: 'User ID',
+    th_username: 'Username',
+    th_family: 'Family Control',
+    th_last_seen: 'Last Heartbeat',
+    th_created: 'Registered',
+    stat_users: 'Users',
+    stat_medicines: 'Medicines',
+    stat_records: 'Records',
+    stat_blobs: 'Encrypted Blobs',
+    stat_media: 'Encrypted Media',
+    pill_on: 'Enabled',
+    pill_off: 'Disabled',
+    force_logout_btn: 'Force sign-out',
+    admin_prefix: 'Administrator: ',
+    pw_changed: 'Password changed',
+    force_logout_confirm: 'Force this user to sign out? (Their app must sign in again)',
+    force_logout_done: 'User signed out',
+  },
+  zh: {
+    page_title: '智能药箱 · 管理后台',
+    login_title: '管理后台',
+    login_subtitle: '请输入管理员账号登录',
+    username_label: '用户名',
+    password_label: '密码',
+    login_btn: '登录',
+    main_title: '管理后台',
+    logout_btn: '退出登录',
+    tab_overview: '服务器概览',
+    tab_users: '用户管理',
+    tab_docs: 'API 文档',
+    default_pw_banner: '⚠️ 初始默认密码仍在生效，请立即在下方修改管理员密码（公网部署前必须完成）。',
+    overview_title: '服务器概览',
+    pairing_title: '局域网配对',
+    pairing_desc: '生成一次性配对码，供设备与服务器完成配对。',
+    pairing_btn: '生成配对码',
+    pairing_result_prefix: '配对码：',
+    pairing_result_suffix: '（{min} 分钟内有效，仅可使用一次）',
+    pairing_hint: '在 App 中：我的 → 服务器 → 保存 https 地址，按提示输入该码。',
+    change_pw_title: '修改管理员密码',
+    old_pw_label: '旧密码',
+    new_pw_label: '新密码（8-64 位）',
+    change_pw_btn: '修改密码',
+    users_title: '用户管理',
+    th_user_code: '用户id',
+    th_username: '用户名',
+    th_family: '家人控制',
+    th_last_seen: '最近心跳',
+    th_created: '注册时间',
+    stat_users: '用户数',
+    stat_medicines: '药品数',
+    stat_records: '记录数',
+    stat_blobs: '加密数据块',
+    stat_media: '加密媒体',
+    pill_on: '已开启',
+    pill_off: '未开启',
+    force_logout_btn: '强制下线',
+    admin_prefix: '管理员：',
+    pw_changed: '密码已修改',
+    force_logout_confirm: '确认强制下线该用户？（其 App 需重新登录）',
+    force_logout_done: '已强制下线',
+  },
+};
+
+let lang = 'en';
+try { lang = localStorage.getItem('smb_admin_lang') || 'en'; } catch (e) {}
+function t(key) { return (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key; }
+
+// 服务器常见错误的本地翻译（未知/未收录的服务器消息原样显示）
+const SERVER_MSG = {
+  '用户名或密码错误': { en: 'Incorrect username or password', zh: '用户名或密码错误' },
+  '旧密码错误': { en: 'Incorrect old password', zh: '旧密码错误' },
+  '未登录或会话已失效': { en: 'Not signed in or session expired', zh: '未登录或会话已失效' },
+  '会话已失效，请重新登录': { en: 'Session expired, please sign in again', zh: '会话已失效，请重新登录' },
+  '尝试过于频繁，请稍后再试': { en: 'Too many attempts, please try again later', zh: '尝试过于频繁，请稍后再试' },
+  '请先修改默认密码': { en: 'Change the default password first', zh: '请先修改默认密码' },
+  'CSRF 校验失败': { en: 'CSRF verification failed', zh: 'CSRF 校验失败' },
+  '用户不存在': { en: 'User not found', zh: '用户不存在' },
+  '配对仅适用于局域网直连模式': { en: 'Pairing is only available in LAN mode', zh: '配对仅适用于局域网直连模式' },
+};
+function localizeServerMsg(detail) {
+  const entry = SERVER_MSG[detail];
+  return entry ? entry[lang] : detail;
+}
+
+function applyLang() {
+  document.documentElement.lang = lang;
+  document.title = t('page_title');
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('.lang-switch button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  // 动态内容按当前语言重渲染（不清空会话/消息状态）
+  if (!$('mainView').classList.contains('hidden')) refresh();
+}
+function setLang(l) {
+  if (l !== 'en' && l !== 'zh') return;
+  lang = l;
+  try { localStorage.setItem('smb_admin_lang', l); } catch (e) {}
+  applyLang();
+}
+document.querySelectorAll('.lang-switch button').forEach(b => {
+  b.addEventListener('click', () => setLang(b.dataset.lang));
+});
+
+// ==================== 标签页 ====================
+let docsLoaded = false;
+function showTab(name) {
+  ['overview', 'users', 'docs'].forEach(n => {
+    $('tab' + n.charAt(0).toUpperCase() + n.slice(1)).classList.toggle('hidden', n !== name);
+  });
+  document.querySelectorAll('.tabs button').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === name);
+  });
+  if (name === 'docs' && !docsLoaded) {
+    docsLoaded = true;
+    $('docsFrame').src = '/api/admin/docs';
+  }
+}
+document.querySelectorAll('.tabs button').forEach(b => {
+  b.addEventListener('click', () => showTab(b.dataset.tab));
+});
+
+// ==================== API 封装 ====================
+const api = async (method, path, body) => {
+  const headers = {'Content-Type':'application/json'};
+  if (method !== 'GET') {
+    const m = document.cookie.match(/(?:^|;\s*)admin_csrf=([^;]+)/);
+    if (m) headers['X-CSRF-Token'] = m[1];
+  }
+  const res = await fetch(path, {method, headers, body: body ? JSON.stringify(body) : undefined, credentials:'same-origin'});
+  const data = await res.json().catch(() => ({detail: res.statusText}));
+  if (!res.ok) {
+    // detail 可能是字符串（业务错误）或校验错误数组（422）——统一转成可读文本
+    let detail;
+    if (Array.isArray(data.detail)) {
+      detail = data.detail.map(d => (typeof d === 'object' && d.msg) ? d.msg : JSON.stringify(d)).join('; ');
+    } else if (typeof data.detail === 'string' && data.detail) {
+      detail = data.detail;
+    } else {
+      detail = res.statusText;
+    }
+    // 会话失效（401）：跳回登录页。登录接口自身的 401 是「用户名或密码错误」，不得误报「未登录」
+    if (res.status === 401 && path !== '/api/admin/login') showLogin();
+    throw new Error(localizeServerMsg(detail));
+  }
+  return data.data;
+};
+
+function showLogin() {
+  $('mainView').classList.add('hidden');
+  $('loginView').classList.remove('hidden');
+  $('loginMsg').textContent = '';
+}
+function showMain() {
+  $('loginView').classList.add('hidden');
+  $('mainView').classList.remove('hidden');
+  refresh();
+}
+function fmtTime(s) { return s ? String(s).replace('T',' ').slice(0,16) : '—'; }
+
+async function refresh() {
+  try {
+    const dash = await api('GET', '/api/admin/dashboard');
+    $('whoami').textContent = t('admin_prefix') + dash.username;
+    $('pwBanner').classList.toggle('hidden', !dash.is_default_password);
+    const stats = [
+      [t('stat_users'), dash.user_count],
+      [t('stat_medicines'), dash.medicine_count],
+      [t('stat_records'), dash.record_count],
+      [t('stat_blobs'), dash.blob_count],
+      [t('stat_media'), dash.media_count],
+    ];
+    $('stats').innerHTML = stats.map(([k,v]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join('');
+    const users = await api('GET', '/api/admin/users');
+    $('userRows').innerHTML = users.map(u => `
+      <tr>
+        <td>${u.user_code || '—'}</td>
+        <td>${(u.username||'').replace(/[<>&]/g,'')}</td>
+        <td><span class="pill ${u.family_control_enabled?'on':'off'}">${u.family_control_enabled?t('pill_on'):t('pill_off')}</span></td>
+        <td>${fmtTime(u.last_seen_at)}</td>
+        <td>${fmtTime(u.created_at)}</td>
+        <td><button class="danger" data-uid="${u.id}">${t('force_logout_btn')}</button></td>
+      </tr>`).join('');
+    document.querySelectorAll('button[data-uid]').forEach(b => b.onclick = () => forceLogout(b.dataset.uid, b));
+  } catch (e) { if (e.message !== localizeServerMsg('未登录或会话已失效')) $('loginMsg').textContent = e.message; }
+}
+
+async function forceLogout(uid, btn) {
+  if (!confirm(t('force_logout_confirm'))) return;
+  btn.disabled = true;
+  try {
+    await api('POST', `/api/admin/users/${uid}/force-logout`);
+    alert(t('force_logout_done'));
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+$('btnLogin').onclick = async () => {
+  try {
+    await api('POST', '/api/admin/login', {username:$('loginUsername').value, password:$('loginPassword').value});
+    showMain();
+  } catch (e) { $('loginMsg').textContent = e.message; }
+};
+$('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') $('btnLogin').click(); });
+$('btnLogout').onclick = async () => { try { await api('POST', '/api/admin/logout'); } catch (e) {} showLogin(); };
+$('btnChangePw').onclick = async () => {
+  const msg = $('pwMsg'); msg.className = 'msg';
+  try {
+    await api('POST', '/api/admin/change-password', {old_password:$('oldPw').value, new_password:$('newPw').value});
+    msg.textContent = t('pw_changed'); msg.classList.add('ok');
+    $('oldPw').value = ''; $('newPw').value = '';
+    refresh();
+  } catch (e) { msg.textContent = e.message; msg.classList.add('err'); }
+};
+$('btnGenPairCode').onclick = async () => {
+  const msg = $('pairMsg'); msg.className = 'msg';
+  try {
+    const data = await api('POST', '/api/admin/pairing-code');
+    $('pairCode').textContent = data.code;
+    $('pairHint').textContent =
+      t('pairing_result_prefix') + data.code + ' ' +
+      t('pairing_result_suffix').replace('{min}', String(Math.round(data.ttl_seconds / 60))) + '  ' +
+      t('pairing_hint');
+    $('pairResult').classList.remove('hidden');
+  } catch (e) {
+    $('pairResult').classList.add('hidden');
+    msg.textContent = e.message; msg.classList.add('err');
+  }
+};
+
+// 启动：应用语言；无会话时 401 → 登录页
+applyLang();
+api('GET', '/api/admin/dashboard').then(() => showMain()).catch(e => { if (e.message !== localizeServerMsg('未登录或会话已失效')) showLogin(); });
+</script>
+</body>
+</html>

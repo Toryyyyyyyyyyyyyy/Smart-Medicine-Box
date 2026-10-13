@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- 斜置药丸：胶囊主体 + 中间刻痕（evenOdd 镂空，可整体着色） -->
+    <group
+        android:pivotX="24"
+        android:pivotY="24"
+        android:rotation="-45">
+        <path
+            android:fillColor="#FF000000"
+            android:fillType="evenOdd"
+            android:pathData="M15,18 L33,18 C36.3,18 39,20.7 39,24 C39,27.3 36.3,30 33,30 L15,30 C11.7,30 9,27.3 9,24 C9,20.7 11.7,18 15,18 Z M23,18 L25,18 L25,30 L23,30 Z" />
+    </group>
+</vector>

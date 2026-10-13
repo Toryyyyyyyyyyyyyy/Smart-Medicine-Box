@@ -1,0 +1,30 @@
+# 环境与秘密（绝不提交）
+.env
+*.db
+*.db-journal
+backend/.secret_key
+backend/server_identity/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Android 本地配置与构建产物
+android-app/local.properties
+android-app/app/build/
+android-app/.gradle/
+android-app/.idea/
+*.apk
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# IDE
+.idea/
+*.iml
