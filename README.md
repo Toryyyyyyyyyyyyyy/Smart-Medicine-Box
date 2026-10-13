@@ -56,7 +56,7 @@ The app can be used fully offline without an account; login and server features 
   - later than the threshold: `taken_late`.
 - **Early doses**: the main dose button corresponds to the earliest unhandled dose of today. The first slot of the day may be taken early; after an early take, the button is disabled until that slot's original scheduled time passes, then it unlocks and points to the next slot. The threshold affects only the status label, never button unlocking.
 - **Skip (postpone)**: the alarm popup's "not now" writes an internal `pending` entry (hidden from the records list) rather than a real record. At midnight, pending entries of the previous day become real `missed` records with no taken time. The same dose cannot create duplicate pending/missed entries.
-- **Missed doses and makeup**: after midnight, missed doses appear as "HH:MM 未服用" buttons on the medicine page. The main button first serves the earliest pending/missed dose from today onward; individual buttons can also be taken directly. Taking a makeup dose decrements stock once.
+- **Missed doses and makeup**: if "not now" on the alarm popup is clicked, the missed doses appear as "HH:MM missed" buttons on the medicine page. The main button first serves the earliest pending/missed dose from today onward; individual buttons can also be taken directly. Taking a makeup dose decrements stock once.
 - **Undo**: only taken records of *today* may be undone (on the family side, "today" is judged by the controlled user's time, never the family device's clock). Undoing restores stock (+1). If the scheduled time has already passed, a missed-dose button is created instead of restoring the alarm; otherwise the dose returns to unhandled and the alarm is restored. Editing a medicine's time slots or moving it to the recycle bin freezes undo for all existing records of that medicine (a record-level `undoable` flag).
 - **Records deletion**: soft deletion; deleted records disappear from the list without affecting stock, buttons, or alarms.
 
@@ -289,7 +289,7 @@ App 为三栏底部导航：
   - 推迟超过阈值：推迟服用（taken_late）。
 - **提前服用**：主按钮对应今天最早未处理剂量。今天第一个时间点可提前服用；提前服用后按钮禁用，直到该时间点原定时间到达后解锁并指向下一剂。阈值只决定状态标签，绝不参与按钮解锁。
 - **暂不服用**：弹窗点「暂不服用」写入内部 `pending` 条目（记录列表隐藏），不产生正式记录；0 点时前一天 pending 转为正式「未服用」记录（无实际时间）。同一剂不会重复生成 pending/未服用条目。
-- **未服用与补服**：0 点后药品页出现「HH:MM 未服用」按钮。主按钮优先处理今天起最早的未服用/暂不服用剂量，也可单独点指定按钮补服。补服同样库存 -1。
+- **未服用与补服**：弹窗点「暂不服用」后药品页出现「HH:MM 未服用」按钮。主按钮优先处理今天起最早的未服用/暂不服用剂量，也可单独点指定按钮补服。补服同样库存 -1。
 - **撤销**：仅「今天」的已服用记录可撤销（家属端按控制对象时间判定「今天」，家属手机本地时钟不参与）。撤销后库存 +1；若计划时间已过则生成未服用按钮（不恢复闹钟），否则剂量回到未处理、闹钟恢复。修改该药时间点或将其移入回收站会冻结其全部现存记录的撤销资格（记录级 undoable 标记）。
 - **记录删除**：软删除，仅从列表消失，不影响库存/按钮/闹钟。
 
